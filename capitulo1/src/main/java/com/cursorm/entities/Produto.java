@@ -55,6 +55,85 @@ public class Produto {
     @Formula("vl_preco*0.9")
     @Column(name = "vl_des_produto")
     private double precoDesconto;
+
+    public Produto() {
+    }
+
+    public Produto(int id, String nome, double preco, Calendar dataValidade, Estado estado, Calendar dataCadastro,
+            Calendar dataModificacao, double precoDesconto) {
+        this.id = id;
+        this.nome = nome;
+        this.preco = preco;
+        this.dataValidade = dataValidade;
+        this.estado = estado;
+        this.dataCadastro = dataCadastro;
+        this.dataModificacao = dataModificacao;
+        this.precoDesconto = precoDesconto;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public double getPreco() {
+        return preco;
+    }
+
+    public void setPreco(double preco) {
+        this.preco = preco;
+    }
+
+    public Calendar getDataValidade() {
+        return dataValidade;
+    }
+
+    public void setDataValidade(Calendar dataValidade) {
+        this.dataValidade = dataValidade;
+    }
+
+    public Estado getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Estado estado) {
+        this.estado = estado;
+    }
+
+    public Calendar getDataCadastro() {
+        return dataCadastro;
+    }
+
+    public void setDataCadastro(Calendar dataCadastro) {
+        this.dataCadastro = dataCadastro;
+    }
+
+    public Calendar getDataModificacao() {
+        return dataModificacao;
+    }
+
+    public void setDataModificacao(Calendar dataModificacao) {
+        this.dataModificacao = dataModificacao;
+    }
+
+    public double getPrecoDesconto() {
+        return precoDesconto;
+    }
+
+    public void setPrecoDesconto(double precoDesconto) {
+        this.precoDesconto = precoDesconto;
+    }
 }
 
 /*
