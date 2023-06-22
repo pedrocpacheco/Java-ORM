@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
@@ -24,6 +26,10 @@ public class Estabelecimento {
 
     @OneToOne(mappedBy = "estabelecimento") // Bi relacionamento (ja foi feito em outra classe)
     private ContratoAluguel contrato;
+
+    @ManyToOne
+    @JoinColumn(name = "id_tipo")
+    private TipoEstabelecimento tipo;
 
     public Integer getId() {
         return id;
