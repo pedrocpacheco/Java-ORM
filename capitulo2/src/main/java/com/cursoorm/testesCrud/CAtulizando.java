@@ -23,7 +23,7 @@ public class CAtulizando {
             }
         }
 
-        Cliente novoMesmo = new Cliente(2, "Thiago");
+        Cliente novoMesmo = new Cliente(2, "Thiago", null);
 
         em.merge(novoMesmo);
         try{

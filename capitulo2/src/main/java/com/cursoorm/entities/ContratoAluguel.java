@@ -30,6 +30,15 @@ public class ContratoAluguel {
     @JoinColumn(name = "id_estabelecimento")
     private Estabelecimento estabelecimento;
 
+    public ContratoAluguel() {
+    }
+
+    public ContratoAluguel(Integer id, float valor, Calendar dataVencimento, Estabelecimento estabelecimento) {
+        this.id = id;
+        this.valor = valor;
+        this.dataVencimento = dataVencimento;
+        this.estabelecimento = estabelecimento;
+    }
 
     public Integer getId() {
         return id;
@@ -55,5 +64,11 @@ public class ContratoAluguel {
         this.dataVencimento = dataVencimento;
     }
 
-    
+    public Estabelecimento getEstabelecimento() {
+        return estabelecimento;
+    }
+
+    public void setEstabelecimento(Estabelecimento estabelecimento) {
+        this.estabelecimento = estabelecimento;
+    }
 }
