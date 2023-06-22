@@ -1,4 +1,4 @@
-package com.cursoorm.tests;
+package com.cursoorm.testesCrud;
 
 import com.cursoorm.entities.Cliente;
 
@@ -24,3 +24,19 @@ public class Deletando {
         }
     }
 }
+
+/*
+ * 1- Criar Entity Manager
+ *      - Crie uma EntityManagerFactory
+ *      - Crie um EntityManager
+ * 
+ * 2- Encontrar um Objeto Especifico
+ *      - Utilize o metodo find() do EntityManager instanciado
+ *          - O primeiro parametro é o .class da Classe do Objeto
+ *          - O segundo parametro é o ID do objeto especifico desejado
+ * 
+ * 3- Deletando o Objeto Especifico
+ *      - Com o objeto encontrado, utilize o metodo em.remove()
+ *          - Passando o objeto encontrado como parametro
+ *      - Depois, faça o bloco Transaction Comum
+ */
