@@ -2,6 +2,7 @@ package com.cursoorm.entities;
 
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -23,26 +24,27 @@ public class Estabelecimento {
     @SequenceGenerator(name = "estabelecimento", sequenceName = "sq_tb_estabelecimento", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "estabelecimento")
     @Column(name = "id_estabelecimento")
-    private Integer id;
+    private int id;
 
     @Column(name = "nm_estabelecimento", length = 50)
     private String nome;    
 
-    @OneToOne(mappedBy = "estabelecimento") // Bi relacionamento (ja foi feito em outra classe) -> Diz o nome do atributo ja mapeado
+    @OneToOne(mappedBy = "estabelecimento", cascade = CascadeType.PERSIST) // Bi relacionamento (ja foi feito em outra classe) -> Diz o nome do atributo ja mapeado
     private ContratoAluguel contrato;
 
-    @ManyToOne
-    @JoinTable(joinColumns = @JoinColumn(name = "id_estabelecimento"), inverseJoinColumns = @JoinColumn(name = "id_cliente"), name = "tb_cliente_estabelecimento")
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "id_tipo_estabelecimento")
     private TipoEstabelecimento tipo;
 
-    @ManyToMany
-    @JoinColumn(name = "id_clientes")
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(joinColumns = @JoinColumn(name = "id_estabelecimento"), inverseJoinColumns = @JoinColumn(name = "id_cliente"), name = "tb_cliente_estabelecimento")
     private List<Cliente> clientes;
 
-    public Estabelecimento() {
-    }
+    public Estabelecimento(){
+        
+    }    
 
-    public Estabelecimento(Integer id, String nome, ContratoAluguel contrato, TipoEstabelecimento tipo,
+    public Estabelecimento(int id, String nome, ContratoAluguel contrato, TipoEstabelecimento tipo,
             List<Cliente> clientes) {
         this.id = id;
         this.nome = nome;
@@ -51,11 +53,11 @@ public class Estabelecimento {
         this.clientes = clientes;
     }
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -90,4 +92,6 @@ public class Estabelecimento {
     public void setClientes(List<Cliente> clientes) {
         this.clientes = clientes;
     }
+
+    
 }

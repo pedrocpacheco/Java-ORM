@@ -1,4 +1,4 @@
-package com.cursoorm.testesCrud;
+package com.cursoorm.tests.testesCrud;
 
 import com.cursoorm.entities.Cliente;
 
@@ -34,6 +34,9 @@ public class CAtulizando {
                 em.getTransaction().rollback();
             }
         }
+        
+        em.close();
+        fabrica.close();
     }
 }
 

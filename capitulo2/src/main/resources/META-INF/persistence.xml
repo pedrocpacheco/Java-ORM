@@ -4,13 +4,14 @@
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
                                  http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
              version="2.1">
-    <persistence-unit name="cocapitulodois">
+    <persistence-unit name="lojaorm">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <properties>
             <!-- Configurações do banco de dados MySQL -->
             <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.hbm2ddl.auto" value="create"/>
             <property name="hibernate.format_sql" value="true"/>
-            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/cocapitulodois"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/new_schema"/>
             <property name="javax.persistence.jdbc.user" value="developer"/>
             <property name="javax.persistence.jdbc.password" value="280705"/>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>

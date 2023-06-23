@@ -27,7 +27,8 @@ public class TipoEstabelecimento {
     @OneToMany(mappedBy = "tipo") // Se termina com Many -> Coleção
     private List<Estabelecimento> estabelecimentos;
 
-    public TipoEstabelecimento() {
+    public TipoEstabelecimento(){
+        
     }
 
     public TipoEstabelecimento(int id, String nome, List<Estabelecimento> estabelecimentos) {
@@ -59,4 +60,6 @@ public class TipoEstabelecimento {
     public void setEstabelecimentos(List<Estabelecimento> estabelecimentos) {
         this.estabelecimentos = estabelecimentos;
     }
+
+    
 }

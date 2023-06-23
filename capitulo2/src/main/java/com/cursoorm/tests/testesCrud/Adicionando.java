@@ -1,4 +1,4 @@
-package com.cursoorm.testesCrud;
+package com.cursoorm.tests.testesCrud;
 
 import com.cursoorm.entities.Cliente;
 

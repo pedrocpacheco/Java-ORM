@@ -4,9 +4,12 @@ import java.util.Calendar;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -16,8 +19,10 @@ import jakarta.persistence.TemporalType;
 public class ContratoAluguel {
     
     @Id
+    @SequenceGenerator(name = "contrato", sequenceName = "sq_tb_contrato", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "contrato")
     @Column(name = "id_contrato")
-    private Integer id;
+    private int id;
 
     @Column(name = "vl_aluguel")
     private float valor;
@@ -30,21 +35,22 @@ public class ContratoAluguel {
     @JoinColumn(name = "id_estabelecimento")
     private Estabelecimento estabelecimento;
 
-    public ContratoAluguel() {
+    public ContratoAluguel(){
+
     }
 
-    public ContratoAluguel(Integer id, float valor, Calendar dataVencimento, Estabelecimento estabelecimento) {
+    public ContratoAluguel(int id, float valor, Calendar dataVencimento, Estabelecimento estabelecimento) {
         this.id = id;
         this.valor = valor;
         this.dataVencimento = dataVencimento;
         this.estabelecimento = estabelecimento;
     }
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -71,4 +77,6 @@ public class ContratoAluguel {
     public void setEstabelecimento(Estabelecimento estabelecimento) {
         this.estabelecimento = estabelecimento;
     }
+
+   
 }
