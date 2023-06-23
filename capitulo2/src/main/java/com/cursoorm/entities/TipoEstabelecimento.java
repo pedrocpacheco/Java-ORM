@@ -60,6 +60,4 @@ public class TipoEstabelecimento {
     public void setEstabelecimentos(List<Estabelecimento> estabelecimentos) {
         this.estabelecimentos = estabelecimentos;
     }
-
-    
 }
