@@ -12,11 +12,26 @@ public class Changing {
         EntityManager em = factory.createEntityManager();
 
         // Maneira 1 -> Mudando do ja existente
-        Cliente mudadoExistente = em.find(Cliente.class, 1);
-        mudadoExistente.setName("Thiago");
+        Cliente mudandoExistente = em.find(Cliente.class, 1);
+        mudandoExistente.setName("Thiago");
 
         try{
-            em.persist(mudadoExistente);
+            em.persist(mudandoExistente);
+            em.getTransaction().begin();
+            em.getTransaction().commit();
+        }catch(Exception e){
+            if(em.getTransaction().isActive())
+                em.getTransaction().rollback();
+        }finally{
+            em.close();
+            factory.close();
+        }
+
+        // Maneira 2 -> Criando um novo
+        Cliente novoMesmoId = new Cliente(1, "Filipe");
+
+        try{
+            em.merge(novoMesmoId);
             em.getTransaction().begin();
             em.getTransaction().commit();
         }catch(Exception e){
