@@ -11,8 +11,13 @@ public class Buscando {
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("crud_orm");
         EntityManager em = factory.createEntityManager();
 
-        Cliente clienteEncontrado = em.find(Cliente.class, 1);
+        Cliente clienteEncontrado = em.find(Cliente.class, 2);
 
-        System.out.println(clienteEncontrado.toString());
+        if(clienteEncontrado != null){
+            System.out.println("Não nulo");
+            System.out.println(clienteEncontrado.toString());
+        }else{
+            System.out.println("Nulo");
+        }
     }
 }
