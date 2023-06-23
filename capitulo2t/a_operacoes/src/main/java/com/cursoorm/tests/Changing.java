@@ -6,15 +6,17 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
-public class Adicionando {
-    public static void main(String[] args) {
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory("crud_orm");
+public class Changing {
+   public static void main(String[] args) {
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("curso_orm");
         EntityManager em = factory.createEntityManager();
 
-        Cliente cliente = new Cliente(0,"Pedro");
+        // Maneira 1 -> Mudando do ja existente
+        Cliente mudadoExistente = em.find(Cliente.class, 1);
+        mudadoExistente.setName("Thiago");
 
         try{
-            em.persist(cliente);
+            em.persist(mudadoExistente);
             em.getTransaction().begin();
             em.getTransaction().commit();
         }catch(Exception e){
@@ -24,5 +26,5 @@ public class Adicionando {
             em.close();
             factory.close();
         }
-    }
+   } 
 }
