@@ -35,12 +35,18 @@ public class Pessoa {
 }
 
 /*
- * Nesse tipo de herença, a representação no Banco de Dados é a mais comum
+ * Nesse tipo de herença, é criada uma tabela para a Classe Pai, com suas informações
+ * E, para cada classe filha, é criada uma nova tabela, contendo apenas as suas informações.
+ * 
+ *      - Existe um relacionmento de 1-1 entre a Pai e as Filhas
+ *      - Persistencia é feita na tabela pai e na tabela filha especifica
+ *      - Não se usa @Table para as classes filhas
+ *      - Não existe repetição de informação da pai nas filhas
+ *  
+ *      Problemas: 
+ *          - Muitas consultas no banco de dados as vezes desnecessarias
+ * 
  * Veja uma imagem de como é vista no banco de dados: 
  * 
  * 1- Na Classe Pai, coloque o @Inheritance(strategy = InheritanceType.JOINED)
- * 
- * Explicação do proprio Java:
- * Uma estratégia na qual os campos específicos de uma subclasse são mapeados para uma tabela separada dos campos 
- * comuns à classe pai e uma junção é executada para instanciar a subclasse.
  */
