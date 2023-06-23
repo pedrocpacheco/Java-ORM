@@ -18,3 +18,8 @@ public class PessoaJuridica extends Pessoa{
     private String cpnj;
 
 }
+
+/*
+ * Utiliza-se o @Entity
+ * Não pode utilizar o @Table
+ */

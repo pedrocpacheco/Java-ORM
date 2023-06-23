@@ -20,5 +20,6 @@ public class PessoaFisica extends Pessoa{
 }
 
 /*
- * Ainda é necessario colocar como entity
+ * Utiliza-se o @Entity
+ * Não pode utilizar o @Table
  */
