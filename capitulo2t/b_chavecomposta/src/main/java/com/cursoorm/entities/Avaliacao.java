@@ -58,13 +58,32 @@ public class Avaliacao implements Serializable{
         return nota;
     }
 
-
-
     public void setNota(int nota) {
         this.nota = nota;
     }
 }
 
 /*
+ * 1- Colocar as duas classes que terão essa relação nessa outra classe
+ *       Neste caso:
+ *          - Usuario faz avalização de Estabelecimento
+ *          - Estabelecimento recebe avaliação de usuario
+ *          (como uma relação de mts para mts, mas com algo proprio)
  * 
+ * 2- Não queremos todas as informações dessas classes, so os seus IDS:
+ *      - @JoinColumn com name = id_nomeClasse
+ *      - @ManyToOne com optinal = false
+ *        (pense que aqui é a central que liga os dois many to many) 
+ * 
+ * 3- Criando classe para armazenar os IDS:
+ *      - Cria-se uma classe AvaliacaoID
+ *      (olhe as informações nela presentes)
+ * 
+ * 4- Finalizando a Classe de Relação:
+ *      - Coloque no topo da Classe a anotação @IdClass
+ *           - Passando no () o .class da classe com os ids
+ *             (AvaliacaoId.class)
+ *           - Coloque @Id nos atributos de classes com Ids
+ * 
+ * Atenção -> Implementar a classe Serializable
  */

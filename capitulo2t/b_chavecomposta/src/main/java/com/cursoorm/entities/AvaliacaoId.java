@@ -58,3 +58,11 @@ public class AvaliacaoId implements Serializable{
         return true;
     }
 }
+
+/*
+ * 1- Criando os Ids
+ *      - Cria um atributo de ID para cada um dos itens da outra classe
+ *      - Os tributos precisam ter o mesmo nome e a mesma ordem da classe original
+ * 
+ * Atenção -> Implementar a classe Serializable
+ */
