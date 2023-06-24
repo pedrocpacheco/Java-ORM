@@ -4,19 +4,11 @@ import com.cursoorm.entity.Estabelecimento;
 
 import jakarta.persistence.EntityManager;
 
-public class EstabelecimentoDAO {
-    
-    private EntityManager em;
+public class EstabelecimentoDAO<Estabelecimento, Integer> extends GenericDAO{
 
-    public void cadastrar(Estabelecimento est){
-        try{
-            em.getTransaction().begin();
-            em.persist(est);
-            em.getTransaction().commit();
-       }catch(Exception e){
-            if(em.getTransaction().isActive())
-                em.getTransaction().rollback();
-       }
+    public EstabelecimentoDAO(EntityManager em) {
+        super(em);
     }
+  
 
 }
