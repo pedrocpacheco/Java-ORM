@@ -47,3 +47,7 @@ public class Cliente {
     private Calendar dataAtualizacao;
 
 }
+
+/*
+ * Entidade mapeada com JPA utilizando todas as Annotations aprendidas
+ */
