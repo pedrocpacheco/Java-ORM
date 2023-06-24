@@ -13,17 +13,7 @@ import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@ToString
 @Entity
 @Table(name = "tb_paciente")
 public class Paciente {
@@ -47,6 +37,5 @@ public class Paciente {
     @Enumerated(EnumType.STRING)
     @Column(name = "ds_genero_paciente")
     private Genero genero;
-
 
 }
