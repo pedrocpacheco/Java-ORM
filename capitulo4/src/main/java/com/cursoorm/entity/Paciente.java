@@ -13,7 +13,17 @@ import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 @Entity
 @Table(name = "tb_paciente")
 public class Paciente {
@@ -24,7 +34,7 @@ public class Paciente {
     @Column(name = "id_paciente")
     private int id;
 
-    @Column(name = "nm_paciente", nullable = false, length = 50)
+    @Column(name = "nm_paciente", nullable = false, length = 80)
     private String nome;
 
     @Column(name = "ds_email_paciente", nullable = false, length = 80)
