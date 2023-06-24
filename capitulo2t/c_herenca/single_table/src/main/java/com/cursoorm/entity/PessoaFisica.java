@@ -18,3 +18,9 @@ public class PessoaFisica extends Pessoa{
     private String cpf;
 
 }
+
+/*
+ * Utiliza-se o @Entity
+ * Não pode utilizar o @Table
+ * Utiliza-se o @DiscriminatorValue para mudar o valor dela no Banco de Dados
+ */
