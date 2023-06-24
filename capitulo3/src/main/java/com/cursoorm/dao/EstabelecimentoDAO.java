@@ -4,7 +4,7 @@ import com.cursoorm.entity.Estabelecimento;
 
 import jakarta.persistence.EntityManager;
 
-public class EstabelecimentoDAO<Estabelecimento, Integer> extends GenericDAO{
+public class EstabelecimentoDAO extends GenericDAO<Estabelecimento, Integer>{
 
     public EstabelecimentoDAO(EntityManager em) {
         super(em);
