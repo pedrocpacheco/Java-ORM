@@ -5,16 +5,19 @@ import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.criteria.CriteriaQuery;
 
 public class GenericDAO<T, K> {
     
+    // Protected pois as filhas precisam ter acesso
     protected EntityManager em;
 
-    private Class<T> clazz;
+    // Protected pois as filhas precisam ter acesso
+    protected Class<T> classeEntidade;
 
     public GenericDAO(EntityManager em){
         this.em = em;
-        clazz = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
+        classeEntidade = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
     }
 
     public void cadastrar(T entidade){
@@ -26,7 +29,7 @@ public class GenericDAO<T, K> {
     }
 
     public T buscar(K chave){
-        return em.find(clazz, chave);
+        return em.find(classeEntidade, chave);
     }
 
     public void remove(K chave){
@@ -37,7 +40,12 @@ public class GenericDAO<T, K> {
     }
 
     public List<T> listar(){
-        return em.createQuery("from " + clazz.getName()).getResultList();    
+        CriteriaQuery<T> query = em.getCriteriaBuilder().createQuery(classeEntidade);
+        CriteriaQuery<T> select = query.select(query.from(classeEntidade));
+        
+        return em.createQuery(select).getResultList();
+
+        //ou: return em.createQuery("from " + clazz.getName()).getResultList();    
     }
 
     public void commit(){
