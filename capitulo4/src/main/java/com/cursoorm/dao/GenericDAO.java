@@ -49,4 +49,18 @@ public class GenericDAO<T, K> {
         //ou: return em.createQuery("from " + clazz.getName()).getResultList(); 
     }
 
+    public void commit(){
+        try{
+            em.getTransaction().begin();
+            em.getTransaction().commit();
+        }catch(Exception e){
+            if(em.getTransaction().isActive())
+                em.getTransaction().rollback();
+        }
+    }
+
+    public void closeEntityManager(){
+        if(em != null && em.isOpen())
+            em.close();
+    }        
 }
