@@ -21,9 +21,14 @@ public class PacienteDAOTest {
         pacientes.forEach(Paciente::toString);
 
         // 2- Consulta Ordenada por Nome
-        List<Paciente> pacientesOrdenados = dao.listarPorNome();
+        List<Paciente> pacientesOrdenados = dao.listarPorNome(10, 2);
         pacientesOrdenados.stream().map(Paciente::getNome).forEach(System.out::println);
 
+        // 3- Consulta com Where
+        List<Paciente> pacientesWhere = dao.buscarPorNome("Pedro");
+        pacientesWhere.forEach(p -> System.out.println(p.getNome()));
+
+        em.close();
         factory.close();
 
     }
