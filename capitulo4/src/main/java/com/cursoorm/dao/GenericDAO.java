@@ -41,12 +41,7 @@ public class GenericDAO<T, K> {
     }
     
     public List<T> listar(){
-        CriteriaQuery<T> query = em.getCriteriaBuilder().createQuery(classeEntidade);
-        CriteriaQuery<T> select = query.select(query.from(classeEntidade));
-
-        return em.createQuery(select).getResultList();
-
-        //ou: return em.createQuery("from " + clazz.getName()).getResultList(); 
+        return em.createQuery("from " + classeEntidade.getName()).getResultList(); 
     }
 
     public void commit(){
@@ -64,3 +59,10 @@ public class GenericDAO<T, K> {
             em.close();
     }        
 }
+
+/*
+ * O metodo Listar no GenericDAO, é usado pois ele sempre segue a mesma estrutura para todas
+ * as classes, então, o que foi dito e usado na classe PacienteDAO, é usado aqui.
+ * 
+ *      - Utilizamos a classeEntidade, para suprir o segundo parametro do createQuery.
+ */
