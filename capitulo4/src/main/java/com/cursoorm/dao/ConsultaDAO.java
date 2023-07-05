@@ -1,5 +1,6 @@
 package com.cursoorm.dao;
 
+import java.util.Calendar;
 import java.util.List;
 
 import com.cursoorm.entity.Consulta;
@@ -18,4 +19,12 @@ public class ConsultaDAO extends GenericDAO<Consulta, Integer>{
                 .setParameter("es", esp)
                 .getResultList();
     }
+
+    public List<Consulta> buscarPorDatas(Calendar inicio, Calendar fim){
+        return em.createQuery("from Consulta where dataConsulta between :i and :f",Consulta.class)
+                .setParameter("i", inicio)
+                .setParameter("f", fim)
+                .getResultList();
+    }
+
 }
