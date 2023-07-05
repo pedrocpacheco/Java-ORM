@@ -12,6 +12,16 @@ public class PacienteDAO extends GenericDAO<Paciente, Integer>{
         super(em);
     }
     
+    public long contar(){
+        return em.createQuery("select count(p) from Paciente p",Long.class).getSingleResult();
+    }
+
+    public Paciente buscarPorEmail(String email){
+        return em.createQuery("from Paciente where email = :e", Paciente.class)
+                .setParameter("e", email)
+                .getSingleResult();
+    }
+
     public List<Paciente> listarDoPaciente(){
         return em.createQuery("from Paciente", Paciente.class)
                     .getResultList();
