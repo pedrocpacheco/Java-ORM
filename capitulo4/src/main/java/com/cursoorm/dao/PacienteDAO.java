@@ -17,18 +17,18 @@ public class PacienteDAO extends GenericDAO<Paciente, Integer>{
     }
 
     public Paciente buscarPorEmail(String email){
-        return em.createQuery("from Paciente where email = :e", Paciente.class)
+        return em.createQuery("from Paciente p where p.email = :e", Paciente.class)
                 .setParameter("e", email)
                 .getSingleResult();
     }
 
     public List<Paciente> listarDoPaciente(){
-        return em.createQuery("from Paciente", Paciente.class)
+        return em.createQuery("from Paciente p", Paciente.class)
                     .getResultList();
     }
 
     public List<Paciente> listarPorNome(int inicio, int fim){      // Atributo = Nome | Tabela = nm_paciente
-        return em.createQuery("from Paciente order by nome", Paciente.class)
+        return em.createQuery("from Paciente p order by p.nome", Paciente.class)
                     .setFirstResult(inicio)
                     .setMaxResults(fim)
                     .getResultList();
