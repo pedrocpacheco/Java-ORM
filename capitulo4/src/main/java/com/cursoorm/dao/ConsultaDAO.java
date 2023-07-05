@@ -27,4 +27,10 @@ public class ConsultaDAO extends GenericDAO<Consulta, Integer>{
                 .getResultList();
     }
 
+    public List<Consulta> buscarPorNomePaciente(String nome){
+        return em.createQuery("from Consulta where paciente.nome like :n", Consulta.class)
+                .setParameter("n", nome)
+                .getResultList();
+    }
+
 }
